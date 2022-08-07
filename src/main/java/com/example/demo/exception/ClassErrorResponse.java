@@ -19,6 +19,4 @@ public class ClassErrorResponse {
     private long timeStamp;
 
 
-
-
 }

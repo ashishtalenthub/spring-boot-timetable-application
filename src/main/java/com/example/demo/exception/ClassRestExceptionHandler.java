@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ClassRestExceptionHandler {
 
 
-    @ExceptionHandler
-    public ResponseEntity<ClassErrorResponse> handleException(ClassErrorResponse exc) {
+    @ExceptionHandler(ClassesNotFoundException.class)
+    public ResponseEntity<ClassErrorResponse> handleException(ClassesNotFoundException exception) {
 
         ClassErrorResponse error = new ClassErrorResponse();
 
         error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setMessage(exc.getMessage());
+        error.setMessage(exception.getMessage());
         error.setTimeStamp(System.currentTimeMillis());
 
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);

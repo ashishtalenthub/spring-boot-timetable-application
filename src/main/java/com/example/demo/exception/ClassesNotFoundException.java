@@ -1,0 +1,24 @@
+package com.example.demo.exception;
+
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ClassesNotFoundException extends RuntimeException {
+
+
+    private static final long serialVersionUID = 1L;
+
+    public ClassesNotFoundException() {
+        super();
+    }
+
+    public ClassesNotFoundException(String message) {
+        super(message);
+    }
+
+    public ClassesNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}

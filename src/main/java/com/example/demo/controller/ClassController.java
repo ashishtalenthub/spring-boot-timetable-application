@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.Classes;
+import com.example.demo.exception.ClassesNotFoundException;
 import com.example.demo.service.ClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,11 +34,11 @@ public class ClassController {
     }
 
     @GetMapping("{classid}")
-    public Optional<Classes> getClassDataById(@PathVariable("classid") long classNumber) throws ClassNotFoundException {
+    public Optional<Classes> getClassDataById(@PathVariable("classid") long classNumber) throws ClassesNotFoundException {
 
 
         if (classNumber < 0) {
-            throw new ClassNotFoundException("Class number not found --" + classNumber);
+            throw new ClassesNotFoundException("Class number not found --" + classNumber);
         }
 
         return classService.getClassesById(classNumber);
